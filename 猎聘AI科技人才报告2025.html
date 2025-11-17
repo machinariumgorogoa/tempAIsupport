@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>猎聘AI科技人才发展报告</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #d0d8ff 0%, #e6d1ff 100%);
+            color: #2a2a4a;
+            line-height: 1.7;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(120, 119, 198, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(120, 119, 198, 0.05) 0%, transparent 20%),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="none" stroke="rgba(100, 100, 200, 0.03)" stroke-width="1" x="100" y="100" width="1000" height="600"/><circle cx="200" cy="200" r="3" fill="rgba(100, 100, 200, 0.05)"/><circle cx="400" cy="300" r="5" fill="rgba(100, 100, 200, 0.05)"/><circle cx="600" cy="250" r="4" fill="rgba(100, 100, 200, 0.05)"/><circle cx="800" cy="400" r="6" fill="rgba(100, 100, 200, 0.05)"/><circle cx="1000" cy="350" r="3" fill="rgba(100, 100, 200, 0.05)"/></svg>');
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .report-header {
+            text-align: center;
+            padding: 40px 0;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .report-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(120, 119, 198, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+            z-index: -1;
+        }
+
+        .report-header h1 {
+            font-size: 2.8em;
+            color: #4a4a8a;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            letter-spacing: -0.5px;
+        }
+
+        .report-header .subtitle {
+            font-size: 1.3em;
+            color: #6a6aa0;
+            font-weight: 400;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: linear-gradient(to bottom, #a78bfa, #8b5cf6);
+            border-radius: 16px 0 0 16px;
+        }
+
+        h2 {
+            font-size: 2em;
+            color: #5a5aad;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(167, 139, 250, 0.4);
+            font-weight: 600;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(to right, #8b5cf6, transparent);
+        }
+
+        h3 {
+            font-size: 1.5em;
+            color: #6a6ab0;
+            margin: 25px 0 15px 0;
+            font-weight: 600;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background: #8b5cf6;
+            border-radius: 50%;
+        }
+
+        h4 {
+            font-size: 1.2em;
+            color: #7a7ac0;
+            margin: 18px 0 12px 0;
+            font-weight: 500;
+            padding-left: 10px;
+            border-left: 3px solid #a78bfa;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+            color: #3a3a5a;
+            font-weight: 400;
+        }
+
+        .highlight-box {
+            background: rgba(167, 139, 250, 0.15);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        .data-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .data-list li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            border-bottom: 1px dashed rgba(139, 92, 246, 0.15);
+            transition: background 0.3s ease;
+        }
+
+        .data-list li:hover {
+            background: rgba(167, 139, 250, 0.1);
+            border-radius: 6px;
+        }
+
+        .data-list li:last-child {
+            border-bottom: none;
+        }
+
+        .data-list li::before {
+            content: '▶';
+            position: absolute;
+            left: 10px;
+            color: #8b5cf6;
+            font-size: 0.9em;
+            top: 12px;
+        }
+
+        .percentage {
+            color: #8b5cf6;
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 50px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(120, 119, 198, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+            z-index: -1;
+        }
+
+        .footer .copyright {
+            color: #6a6aa0;
+            font-size: 1em;
+            font-weight: 500;
+        }
+
+        .summary {
+            background: linear-gradient(135deg, rgba(167, 139, 250, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
+            border: 1px solid rgba(139, 92, 246, 0.4);
+            border-radius: 16px;
+            padding: 30px;
+            margin-top: 40px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+        }
+
+        .summary h2 {
+            color: #5a4a8a;
+            border-bottom: 2px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .summary-content {
+            color: #4a4a6a;
+            font-size: 1.1em;
+            line-height: 1.8;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .report-header h1 {
+                font-size: 2em;
+            }
+            
+            h2 {
+                font-size: 1.5em;
+            }
+            
+            h3 {
+                font-size: 1.3em;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+        }
+
+        .chart-placeholder {
+            background: rgba(255, 255, 255, 0.4);
+            border: 2px dashed rgba(139, 92, 246, 0.4);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            color: #7a7ac0;
+            margin: 20px 0;
+            font-style: italic;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .chart-placeholder:hover {
+            background: rgba(255, 255, 255, 0.5);
+            border-color: rgba(139, 92, 246, 0.6);
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+    <div class="container">
+        <div class="report-header">
+            <h1>猎聘AI科技人才发展报告</h1>
+            <div class="subtitle">2025年度AI人才市场深度洞察</div>
+        </div>
+
+        <div class="section">
+            <h2>一、报告核心背景</h2>
+            <p>2025年AI从技术革新升级为产业与社会变革核心驱动力，重塑全球人才市场。依托猎聘大数据，聚焦AI人才流动、技能要求、薪酬变迁，为个人职业进化与企业人才战略提供指引。</p>
+        </div>
+
+        <div class="section">
+            <h2>二、AI相关岗位整体爆发式增长</h2>
+            
+            <h3>增长特征</h3>
+            <p>全行业AI相关岗位呈爆发式增长，且增长高度集中化。2025年1-7月同比增长TOP20职能中，AI相关岗位均上榜。</p>
+            
+            <h4>TOP增长职能（按增速排序）</h4>
+            <ul class="data-list">
+                <li>数据科学家：<span class="percentage">64.14%</span>（需求爆发，反映企业数据驱动决策需求）</li>
+                <li>机器人工程师：<span class="percentage">57.78%</span>（位列第二，凸显AI产业化落地需求）</li>
+                <li>算法工程师：<span class="percentage">52.15%</span></li>
+                <li>数据建模：<span class="percentage">36.65%</span></li>
+                <li>机器学习：<span class="percentage">31.32%</span></li>
+                <li>数据标注：<span class="percentage">31.01%</span>（技术人才需求多元化）</li>
+            </ul>
+
+            <h3>增长核心原因</h3>
+            <div class="highlight-box">
+                <p><strong>企业数字化转型刚性需求</strong>：AI技术从实验室走向产业化关键转折</p>
+                <p><strong>未来需求焦点</strong>：兼具技术能力与行业知识的复合型人才成为市场争夺核心</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>三、AI核心人才——AI技术人才供需研究</h2>
+            
+            <h3>（一）AI技术人才需求分析</h3>
+            <h4>整体增长与行业分布</h4>
+            <p>2025年1-7月AI技术新发职位整体增长<span class="percentage">37.56%</span>，覆盖全行业</p>
+            
+            <div class="highlight-box">
+                <p><strong>行业占比TOP3</strong>：互联网（14.62%）、电子/半导体/集成电路（11.12%）、计算机软件（10.28%）</p>
+                <p><strong>增速TOP2</strong>：家电（258.66%，传统制造向"硬件+AI"升级）、科技金融（116.26%，AI在风控/投顾规模化应用）</p>
+            </div>
+
+            <h4>热招职能（规模与增速双维度）</h4>
+            <ul class="data-list">
+                <li>算法工程师：新发职位占比第一，同比增长<span class="percentage">52.15%</span>（规模增速双领先）</li>
+                <li>机器学习：增速<span class="percentage">31.32%</span>（第二）</li>
+                <li>深度学习：增速<span class="percentage">25.75%</span>（第三，底层算法能力构建）</li>
+                <li>图像算法（2.67%）、机器视觉（17.07%，视觉领域场景深耕）</li>
+            </ul>
+
+            <h4>区域需求分布</h4>
+            <p><strong>城市群</strong>：长三角占比40.37%（需求最多），大湾区增速超40%（最快），成渝增速超40%，京津冀相对较慢（形成"长三角引领、多极协同"格局）</p>
+            <p><strong>城市</strong>：北上深占比合计55%（需求核心），苏州增速75.60%、合肥增速52.58%（新一线城市崛起，人才需求"梯度分布、多极增长"）</p>
+
+            <h3>（二）AI技术岗位招聘薪资分析</h3>
+            <div class="highlight-box">
+                <p><strong>整体高薪优势</strong>：50万年薪以上岗位占比<span class="percentage">31.38%</span>，远超全行业（6.47%）、互联网行业（18.47%）、AI行业（15.80%）</p>
+                <p>50万年薪以上职位同比增长<span class="percentage">39.82%</span>，仅次于互联网行业</p>
+            </div>
+
+            <h4>分职能高薪分布（50万+占比）</h4>
+            <ul class="data-list">
+                <li>深度学习：<span class="percentage">40.69%</span>（最高，前沿技术人才溢价显著）</li>
+                <li>机器学习：<span class="percentage">35.86%</span></li>
+                <li>算法工程师：<span class="percentage">32.33%</span>（AI基础支柱，高薪竞争力强）</li>
+                <li>图像算法：22.95%、机器视觉：10.52%</li>
+            </ul>
+
+            <h3>（三）AI技术人才供给分析</h3>
+            <h4>人才紧缺性</h4>
+            <p>整体人才紧缺指数（TSI）<span class="percentage">2.39</span>（>1即供不应求）</p>
+            <p>细分职能最紧缺：搜索算法（TSI超7）、推荐算法（TSI高），语音识别、算法工程师、自然语言处理TSI均>2</p>
+
+            <h4>人才核心优势</h4>
+            <ul class="data-list">
+                <li><strong>教育背景</strong>：硕士+博士占比67.5%（博士增速22.60%），985/211毕业生占比超45%（增速17.83%），海归增速30.98%（熟悉国际前沿）</li>
+                <li><strong>毕业院校</strong>：国内TOP3（中科院大学、上海交大、北航），海外TOP3（新加坡国立、新南威尔士、南洋理工，香港6所院校上榜）</li>
+                <li><strong>专业背景</strong>：以计算机科学与技术、人工智能为主，生物医学工程、机器人、商业分析等交叉学科增多（AI跨领域渗透）</li>
+                <li><strong>薪资水平</strong>：整体实际年薪32.38万（期望43.96万），博士实际年薪54.62万（学历溢价显著）</li>
+                <li><strong>城市分布</strong>：京沪深占比超40%（核心聚集地），杭州、南京、成都等新兴城市形成多层次分布</li>
+            </ul>
+            <p><strong>供给矛盾</strong>：人才培养速度跟不上产业需求</p>
+        </div>
+
+        <div class="section">
+            <h2>四、AI赋能——AI工具使用情况分析</h2>
+            
+            <h3>（一）企业端AI工具应用</h3>
+            <div class="highlight-box">
+                <p><strong>岗位要求与薪资溢价</strong>：明确要求AI工具的岗位同比增长<span class="percentage">152.27%</span>（AI向全职能扩展）</p>
+                <p>要求AI技能的岗位年薪比无要求高约8万（2025年达29.58万，无要求20.09万）</p>
+            </div>
+
+            <h4>职能需求分布</h4>
+            <p>要求AI工具的TOP3职能：产品经理、算法工程师、平面设计</p>
+            <p>覆盖技术岗（算法、开发）与非技术岗（产品、运营、设计），重视"AI+专业"结合能力</p>
+
+            <h3>（二）人才端AI工具掌握情况</h3>
+            <ul class="data-list">
+                <li><strong>掌握人数增长</strong>：简历注明会AI工具的人才同比增长<span class="percentage">83.59%</span></li>
+                <li><strong>年龄分布</strong>：25-30岁占比30.02%（最高），45岁以上增速82.43%（打破年龄壁垒）</li>
+                <li><strong>职能分布</strong>：产品经理占比13.06%（第一，是算法工程师的6倍），平面设计、视觉设计等创意岗+算法、Java等技术岗为主，基础执行岗比高层管理更积极（自下而上变革）</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>五、未来AI发展趋势展望</h2>
+            
+            <h3>（一）人才素养核心要求</h3>
+            <div class="highlight-box">
+                <p><strong>能力结构</strong>：以"人机协同"为核心，基础能力（计算思维、数据协作）+核心能力（创新、批判思维、伦理判断、情感洞察）</p>
+                <p><strong>组织模式</strong>：企业向"AI执行网络"转型（从人力密集到智能密集），涌现AI训练师、伦理治理专家、人机交互设计师等新角色</p>
+                <p><strong>关键支柱</strong>：持续学习、伦理意识、跨界整合能力</p>
+            </div>
+
+            <h3>（二）职场人竞争力提升路径</h3>
+            <h4>核心方向：聚焦"人机协同"</h4>
+            <ul class="data-list">
+                <li><strong>能力提升</strong>：
+                    <ul style="margin-left: 20px; margin-top: 5px;">
+                        <li>数字化能力：数据素养、提示工程、工具化思维</li>
+                        <li>软实力：复杂问题解决、批判性思考、情感沟通</li>
+                        <li>持续学习：关注技术+行业融合场景，跨领域整合知识</li>
+                    </ul>
+                </li>
+                <li><strong>角色转型</strong>：从执行者→AI管理者、策略设计者、伦理监督者</li>
+                <li><strong>竞争力本质</strong>：人的洞察+创新+价值观与AI效率+规模结合，重视伦理、系统思维、人文关怀</li>
+            </ul>
+        </div>
+
+        <div class="summary">
+            <h2>全文总结</h2>
+            <div class="summary-content">
+                <p><strong>AI人才市场呈现爆发式增长态势</strong>：2025年AI相关岗位需求激增，数据科学家、机器人工程师等职位增速超50%，50万以上年薪职位占比达31.38%，显著高于全行业平均水平。</p>
+                
+                <p><strong>区域分布呈现"长三角引领、多极协同"格局</strong>：长三角占比40.37%需求最多，大湾区、成渝增速超40%，北上深合计占比55%为核心需求城市，苏州、合肥等新一线城市快速崛起。</p>
+                
+                <p><strong>人才供需矛盾突出</strong>：整体人才紧缺指数2.39，搜索算法、推荐算法等职能TSI超7，硕士博士占比67.5%但仍无法满足产业需求，人才培养速度滞后于市场发展。</p>
+                
+                <p><strong>AI工具应用加速普及</strong>：企业端要求AI技能的岗位增长152.27%，人才端掌握AI工具人数增长83.59%，产品经理成为AI工具应用最广泛职能，AI+专业能力成为新标准。</p>
+                
+                <p><strong>未来趋势指向"人机协同"</strong>：职场竞争力将聚焦于数字化能力、软实力与持续学习的结合，新兴角色如AI训练师、伦理治理专家将大量涌现，跨界整合能力成为关键。</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="copyright">
+                <p>&copy; 2025 @machinariumAIsupport</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
